@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.techdot.flickrgallery.databinding.ItemPhotoBinding
-import com.techdot.flickrgallery.databinding.ItemPhotoSearchBinding
 import com.techdot.flickrgallery.models.Photo
 import com.techdot.flickrgallery.ui.gallery.FlickrPhotoAdapter
 
@@ -20,7 +19,7 @@ class FlickrPhotoSearchAdapter(photoList: List<Photo>, context: Context)
     private val photos = photoList
     private val context = context
 
-    inner class ViewHolder(private val binding: ItemPhotoSearchBinding, private val context: Context):
+    inner class ViewHolder(private val binding: ItemPhotoBinding, private val context: Context):
         RecyclerView.ViewHolder(binding.root) {
         fun bind(photo: Photo) {
             if(photo.url_s != null) {
@@ -28,14 +27,16 @@ class FlickrPhotoSearchAdapter(photoList: List<Photo>, context: Context)
                     .load(Uri.parse(photo.url_s))
                     .centerCrop()
                     .transition(DrawableTransitionOptions.withCrossFade())
-                    .into(binding.photo)
+                    .into(binding.imageView)
+
+                binding.textViewUserName.text = photo.owner
             }
 
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemPhotoSearchBinding.inflate(
+        val binding = ItemPhotoBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
