@@ -21,6 +21,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        maven { url "https://oss.jfrog.org/libs-snapshot" }
         jcenter() // Warning: this repository is going to shut down soon
     }
 }

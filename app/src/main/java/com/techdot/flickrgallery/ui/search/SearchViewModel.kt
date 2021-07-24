@@ -17,12 +17,12 @@ class SearchViewModel @Inject constructor(private val repository: PhotoRepositor
     val photos = MutableLiveData<List<Photo>>()
 
     init {
-        getPhotos()
+        getPhotos(DEFAULT_QUERY)
     }
 
-    private fun getPhotos() {
+     fun getPhotos(query: String) {
         viewModelScope.launch {
-            photos.postValue(repository.getPhotosQuery(DEFAULT_QUERY))
+            photos.postValue(repository.getPhotosQuery(query))
         }
     }
 

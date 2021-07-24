@@ -59,9 +59,6 @@ class GalleryFragment : Fragment(R.layout.fragment_gallery) {
                     loadState.append.endOfPaginationReached &&
                     adapter.itemCount < 1) {
                     recyclerView.isVisible = false
-                    textViewEmpty.isVisible = true
-                } else {
-                    textViewEmpty.isVisible = false
                 }
             }
         }

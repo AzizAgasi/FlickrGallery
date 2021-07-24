@@ -23,10 +23,13 @@ class FlickrPhotoSearchAdapter(photoList: List<Photo>, context: Context)
     inner class ViewHolder(private val binding: ItemPhotoSearchBinding, private val context: Context):
         RecyclerView.ViewHolder(binding.root) {
         fun bind(photo: Photo) {
-            Glide.with(context)
-                .load(Uri.parse(photo.url_s))
-                .transition(DrawableTransitionOptions.withCrossFade())
-                .into(binding.photo)
+            if(photo.url_s != null) {
+                Glide.with(context)
+                    .load(Uri.parse(photo.url_s))
+                    .centerCrop()
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .into(binding.photo)
+            }
 
         }
     }

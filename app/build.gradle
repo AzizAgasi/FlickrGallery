@@ -71,6 +71,12 @@ dependencies {
 
     // Paging 3
     implementation "androidx.paging:paging-runtime-ktx:3.0.1"
+
+    // RxJava
+    implementation "io.reactivex.rxjava3:rxjava:3.0.13"
+
+    // RxAndroid
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
 }
 kapt {
     correctErrorTypes true
