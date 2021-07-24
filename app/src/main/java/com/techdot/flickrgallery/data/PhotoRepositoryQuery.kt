@@ -12,14 +12,17 @@ import javax.inject.Singleton
 @Singleton
 class PhotoRepositoryQuery @Inject constructor(private val api: FlickrApiQuery) {
     suspend fun getPhotosQuery(query: String): List<Photo> {
-        val response = api.getPhotoQuery(
-            "flickr.photos.search",
-            "6f102c62f41998d151e5a1b48713cf13",
-            "json",
-            1,
-            "url_s",
-            query
-        )
-        return response.body()?.photos!!.photo
+        if (query != null && query != "") {
+            val response = api.getPhotoQuery(
+                "flickr.photos.search",
+                "6f102c62f41998d151e5a1b48713cf13",
+                "json",
+                1,
+                "url_s",
+                query
+            )
+            return response.body()?.photos!!.photo
+        }
+        return emptyList()
     }
 }

@@ -62,7 +62,9 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
         searchView.queryHint = "Search for an image"
 
-        search()
+        if(searchView.query != null && searchView.query != "") {
+            search()
+        }
 
         return super.onCreateOptionsMenu(menu, inflater)
     }
