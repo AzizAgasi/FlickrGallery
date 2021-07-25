@@ -1,5 +1,6 @@
 package com.techdot.flickrgallery.ui.search
 
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -23,6 +24,7 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.schedulers.Schedulers
+import kotlinx.android.synthetic.main.fragment_search.view.*
 import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint

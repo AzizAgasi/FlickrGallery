@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.paging.LoadState
+import com.google.android.material.snackbar.Snackbar
 import com.techdot.flickrgallery.R
 import com.techdot.flickrgallery.databinding.FragmentGalleryBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,7 +42,6 @@ class GalleryFragment : Fragment(R.layout.fragment_gallery) {
                     footer = FlickrPhotoLoadStateAdapter {adapter.retry()}
                 ))
             }
-            buttonRetry.setOnClickListener { adapter.retry() }
         }
 
         viewModel.photos.observe(viewLifecycleOwner) {
@@ -52,13 +52,18 @@ class GalleryFragment : Fragment(R.layout.fragment_gallery) {
             binding.apply {
                 progressBar.isVisible = loadState.source.refresh is LoadState.Loading
                 recyclerView.isVisible = loadState.source.refresh is LoadState.NotLoading
-                buttonRetry.isVisible = loadState.source.refresh is LoadState.Error
-                textViewError.isVisible = loadState.source.refresh is LoadState.Error
 
                 if (loadState.source.refresh is LoadState.NotLoading &&
                     loadState.append.endOfPaginationReached &&
                     adapter.itemCount < 1) {
                     recyclerView.isVisible = false
+                }
+                if (loadState.source.refresh is LoadState.Error) {
+                    Snackbar.make(view, "Network Error", Snackbar.LENGTH_INDEFINITE)
+                        .setAction("Retry", View.OnClickListener {
+                            adapter.retry()
+                        })
+                        .show()
                 }
             }
         }

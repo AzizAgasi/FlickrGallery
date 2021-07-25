@@ -13,7 +13,6 @@ import javax.inject.Inject
 class SearchViewModel @Inject constructor(private val repository: PhotoRepositoryQuery) :
     ViewModel() {
 
-    private val currentQuery = MutableLiveData(DEFAULT_QUERY)
     val photos = MutableLiveData<List<Photo>>()
 
     init {
