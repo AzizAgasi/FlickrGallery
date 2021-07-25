@@ -10,6 +10,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.techdot.flickrgallery.databinding.ItemPhotoBinding
 import com.techdot.flickrgallery.models.Photo
 
+// Adapter for gallery fragment with pagination
 class FlickrPhotoAdapter
     : PagingDataAdapter<Photo, FlickrPhotoAdapter.ViewHolder>(PHOTO_COMPARATOR){
 

@@ -9,6 +9,7 @@ import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.techdot.flickrgallery.databinding.PhotoLoadStateFooterBinding
 
+// Load state adapter to implement pagination in gallery fragment
 class FlickrPhotoLoadStateAdapter(private val retry: () -> Unit)
     :LoadStateAdapter<FlickrPhotoLoadStateAdapter.LoadStateSearchViewHolder>(){
 

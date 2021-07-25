@@ -1,7 +1,6 @@
 package com.techdot.flickrgallery.di
 
 import com.techdot.flickrgallery.Constants.Companion.BASE_URL
-import com.techdot.flickrgallery.Constants.Companion.BASE_URL_QUERY
 import com.techdot.flickrgallery.api.FlickrApi
 import com.techdot.flickrgallery.api.FlickrApiQuery
 import dagger.Module
@@ -25,11 +24,13 @@ class AppModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
+    // Create retrofit for gallery fragment
     @Provides
     @Singleton
     fun provideFlickrApi(retrofit: Retrofit): FlickrApi =
         retrofit.create(FlickrApi::class.java)
 
+    // Create retrofit for search fragement
     @Provides
     @Singleton
     fun provideFlickrApiQuery(retrofit: Retrofit): FlickrApiQuery =

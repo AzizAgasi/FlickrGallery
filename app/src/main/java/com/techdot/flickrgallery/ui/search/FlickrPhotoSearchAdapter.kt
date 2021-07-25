@@ -13,6 +13,7 @@ import com.techdot.flickrgallery.databinding.ItemPhotoBinding
 import com.techdot.flickrgallery.models.Photo
 import com.techdot.flickrgallery.ui.gallery.FlickrPhotoAdapter
 
+// Adapter for search fragment without pagination
 class FlickrPhotoSearchAdapter(photoList: List<Photo>, context: Context)
     :RecyclerView.Adapter<FlickrPhotoSearchAdapter.ViewHolder>() {
 
